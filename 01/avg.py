@@ -35,13 +35,9 @@ for i in range(nf):
     sum[i] /= count
     sum2[i] = sqrt((sum2[i] - sum[i]*sum[i]/count)/count)
 
-print 'Averages:',
+print 'Averages +/- Std. Devs.:',
 for i in range(nf):
-    print ' {0:.5f}'.format(sum[i]),
+    print ' {0:.5f}+/-{1:0.5f}'.format(sum[i],sum2[i]),
 print
-print 'Std. Devs.:',
-for i in range(nf):
-    print ' {0:.5f}'.format(sum2[i]),
-print
-
+print 'Program ends.'
 
