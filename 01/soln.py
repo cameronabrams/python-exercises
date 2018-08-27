@@ -1,16 +1,14 @@
-# avg.py -- computes the column-wise average and standard deviation of a datafile
-# with an arbitrary number of parallel columns of data
+# This program computes the column-wise average and 
+# standard deviation of a datafile with an arbitrary number 
+# of parallel columns of data of arbitrary length
 # 
-# an exercise in learning python
-#
 # cameron f abrams
 # cfa22@drexel.edu
-# (c) 2017
+# (c) 2018
 # drexel university
 #
-from math import sqrt # so we can use math functions without "math.*"
-import fileinput # can only use fileinput functions with "fileinput.*"
-#import sys
+from math import sqrt 
+import fileinput
 import string
 import numpy as np
 
@@ -22,14 +20,16 @@ for line in fileinput.input():
     if count == 0 :
         nf = len(lst);
         sum = np.zeros(nf)
+        # new accumulator for tallying sums of squares
         sum2 = np.zeros(nf)
-    i = 0
+    i=0
     for x in lst[:] :
-       sum[i] += float(x)
-       sum2[i] += float(x)*float(x)
+       sum[i]+=float(x)
+       # tally the sum of squares
+       sum2[i]+=float(x)*float(x)
        i+=1
 
-    count += 1
+    count+=1
 
 for i in range(nf):
     sum[i] /= count
@@ -40,4 +40,3 @@ for i in range(nf):
     print ' {0:.5f}+/-{1:0.5f}'.format(sum[i],sum2[i]),
 print
 print 'Program ends.'
-
