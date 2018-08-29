@@ -6,17 +6,17 @@ Cameron F. Abrams, `cfa22@drexel.edu`
 
 ## Introduction
 
-Let ![x](.README-files/x.png) be a random variable.  For any sequence
-of ![N](.README-files/N.png) values of ![xseq](.README-files/xseq.png), 
-we define the mean ![mu](./README-files/mu.png) and the standard deviation 
-![sigma](.README-files/sigma.png) as follows:
+Let ![x](.README-images/x.png) be a random variable.  For any sequence
+of ![N](.README-images/N.png) values of ![xseq](.README-images/xseq.png), 
+we define the mean ![mu](./README-images/mu.png) and the standard deviation 
+![sigma](.README-images/sigma.png) as follows:
 
-![mean](.README-files/mean.png)
+![mean](.README-images/mean.png)
  
-![stdev](.README-files/stdev.png)
+![stdev](.README-images/stdev.png)
 
 In this assignment, you will develop a program that can compute 
-![mu](.README-files/mu.png) and ![sigma](.README-files/sigma.png)
+![mu](.README-images/mu.png) and ![sigma](.README-images/sigma.png)
 for a long sequence of numbers.  Before turning to the assignment,
 it is worth thinking about how you might go about computing an average
 of a sequence of, say, 1,048,577 random numbers stored in plain text file.
