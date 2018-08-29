@@ -49,5 +49,22 @@ This exercise demonstrates several concepts:
 
 The image below was created with H = 600.
 
-
 ![](my_bw.png)
+
+4. Write a function that accepts a single floating point value, the values of its minimum and maximum range, and a list of triples, each of which is a color of your choosing in RGB format. The colors are assumed to correspond to equally spaced positions in this range, and the range is cyclic.  The function should use the value to determine an interpolated RGB triple between the two nearest input RGB triples.  This is a "palette".  Now, use this function to choose the color for each pixel, and make a new image 'my_color.png'
+
+The image below was created using the followed ordered color palette:
+```
+# white in RGB
+w=(255,255,255)
+# a nice palette from iwanthue.com
+c1=(197,124,60)
+c2=(171,98,192)
+c3=(114,165,85)
+c4=(202,86,112)
+c5=(99,140,204)
+colors = [c1,c2,c3,c4,c5,w]
+```
+and using 0 for the minimum number of iterations and 50 for the maximum in the cyclic domain; the value used to select the palette color is the number of iterations modulo 50.
+
+![](my_color.png)
