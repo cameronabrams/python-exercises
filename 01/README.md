@@ -13,7 +13,7 @@ we define the mean ![mu](./README-images/mu.png) and the standard deviation
 
 ![mean](.README-images/mean.png)
  
-![stdev](.README-images/stdev.png =x30)
+![stdev](.README-images/stdev.png)
 
 In this assignment, you will develop a program that can compute 
 ![mu](.README-images/mu.png) and ![sigma](.README-images/sigma.png)
