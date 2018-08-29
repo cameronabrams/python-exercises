@@ -40,13 +40,13 @@ separately, add them together to get the total sum, and divide _that_ by 1,048,5
 not feasible, and the second is tedious and inelegant.  But a computer program can be developed that easily 
 handles this task.  How might such a program work?  A lot like the _algorithm_ from number 1 above:
 
-  1.  Open the file (electronically) named by the user.
-  2.  Initialize a tally to zero and a counter to zero.
-  3.  Read the next line in the file; interpret what you see as a number.
-  4.  Add that number to a running tally, and add 1 to a counter to keep track of how many numbers you've read.
-  6.  Ask if you are at the end of the file.  If no, go to 2.  If yes, then divide the tally by the counter, and that's the mean.
-  6.  Print out the value of the mean for the user to see.
-  7.  Exit.
+   1.  Open the file (electronically) named by the user.
+   2.  Initialize a tally to zero and a counter to zero.
+   3.  Read the next line in the file; interpret what you see as a number.
+   4.  Add that number to a running tally, and add 1 to a counter to keep track of how many numbers you've read.
+   5.  Ask if you are at the end of the file.  If no, go to 2.  If yes, then divide the tally by the counter, and that's the mean.
+   6.  Print out the value of the mean for the user to see.
+   7.  Exit.
 
 This assignment _begins_ with both a datafile `data1` and a python program `seed.py` that does just this.  In this assignment
 you will modify `seed.py` so that it additionally computes the standard deviation of the data.
