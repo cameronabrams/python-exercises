@@ -8,7 +8,7 @@ Cameron F. Abrams, `cfa22@drexel.edu`
 
 Let ![x](.README-images/x.png) be a random variable.  For any sequence
 of ![N](.README-images/N.png) values of ![xseq](.README-images/xseq.png), 
-we define the mean ![mu](./README-images/mu.png) and the standard deviation 
+we define the mean ![mu](.README-images/mu.png) and the standard deviation 
 ![sigma](.README-images/sigma.png) as follows:
 
 ![mean](.README-images/mean.png)
