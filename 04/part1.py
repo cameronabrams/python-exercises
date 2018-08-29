@@ -20,4 +20,4 @@ for i in range(W):
    for j in range(H):
      # construct the complex number at this point
      z = complex(zll.real+i*dr,zur.imag-j*di)
-     print z,pow(z,2)
+     print z,pow(z,2),abs(z)

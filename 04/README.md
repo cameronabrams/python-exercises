@@ -18,13 +18,15 @@ thought of as a vector from the origin to the point ![](.README-images/xy.png):
 
 ![](.README-images/complex-plane-fig.png)
 
-_Squaring_ a complex number means multiplying it by itself:
+Also shown in this figure is the "complex conjugate" ![](complexconjugate.png).  _Squaring_ a complex number means multiplying it by itself:
 
 ![](.README-images/complex-square.png)
 
-Our goal in this assignment is not to become experts in complex variables, but instead to explore one of their more famous representations and learn a little more Python programming.   
+and the magnitude (or absolute value) of a complex number is the square root of the product of the number and its complex conjugate:
 
-The thing we will examine here is a particular curve that lives in the complex plane.  This curve is special because it marks the boundary enclosing a special set of complex numbers called the Mandelbrot set, after the mathematician Benoit Mandelbrot.  A complex number ![](.README-images/c.png), is in the Mandelbrot set if the sequence ![](.README-images/mand_seq.png) does not "blow up" (i.e., approach infinity), where
+![](.README-images/absolutevalue.png).
+
+Our goal in this assignment is not to become experts in complex variables, but instead to explore one of their more famous representations and learn a little more Python programming. The thing we will examine here is a particular curve that lives in the complex plane.  This curve is special because it marks the boundary enclosing a special set of complex numbers called the Mandelbrot set, after the mathematician Benoit Mandelbrot.  A complex number ![](.README-images/c.png) is in the Mandelbrot set if the sequence ![](.README-images/mand_seq.png) does not "blow up" (i.e., approach infinity), where
 
 ![](.README-images/mand_f.png).
 
@@ -40,10 +42,21 @@ This exercise demonstrates several concepts:
 
 ## The Assignment
 
-1.  Write a python program that loops over a field of pixels of with W and height H that corresponds to a region in the complex plane with the point (-2,-1) at the lower-left and the point (1,1) at the upper right.  That is, the width of the region is 3 units in W pixels, and the height is 2 units in H pixels; in order to keep the two axes at the same scale, let W = (3/2)H.  At each point, construct a complex number and print out its square.
-(Note that python uses `j` to refer to ![](.README-images/i.png).)  Use the program `seed.py` provided here, which implements a loop over all WxH pixels.
+1.  Write a python program that loops over a field of pixels of with W and height H (such that W = (3/2)H) that corresponds to a region in the complex plane with the point (-2,-1) at the lower-left and the point (1,1) at the upper right.  At each pixel, determine the real and imaginary components of the complex number at that location, and print the number, its square, and its absolute value. (Note that python uses `j` to refer to ![](.README-images/i.png).)  Use the program `seed.py` provided here, which implements a loop over all WxH pixels.  The first few lines of this output looks like this
+```
+(-2+1j) (3-4j) 2.2360679775
+(-2+0.996661101836j) (3.00666664809-3.98664440735j) 2.23457677244
+(-2+0.993322203673j) (3.01331099969-3.97328881469j) 2.23308956388
+(-2+0.989983305509j) (3.01993305481-3.95993322204j) 2.23160635982
+(-2+0.986644407346j) (3.02653281345-3.94657762938j) 2.23012716825
+(-2+0.983305509182j) (3.03311027561-3.93322203673j) 2.22865199715
+(-2+0.979966611018j) (3.03966544129-3.91986644407j) 2.22718085451
+(-2+0.976627712855j) (3.04619831048-3.90651085142j) 2.22571374833
+(-2+0.973288814691j) (3.0527088832-3.89315525876j) 2.22425068659
+(-2+0.969949916528j) (3.05919715943-3.87979966611j) 2.22279167728
+```
 
-2. Write a function that accepts a single complex number and returns the number of iterations of the function above before the magnitude of the results exceeds 2.  Call this function for each point you visit in Part 1.
+2. Write a function that accepts a single complex number and returns the number of iterations of the function above before the magnitude of the results exceeds 2.  Call this function for each point you visit in Part 1 and report the result for each point.
 
 3. Import the `Image` module from the `PIL` (python image library), and create an 'RGB'-mode image of WxH pixels.  At each pixel in the loop, use the `putpixel` function to color the pixel black if the point is in the set and white otherwise.  After the loop, save the image in 'my_bw.png'.
 
