@@ -7,19 +7,19 @@ from PIL import Image
 import sys
 
 EPSILON = sys.float_info.epsilon  # smallest possible difference
-def convert_to_rgb ( minval, maxval, val, colors ):
-    fi = float(val-minval) / float(maxval-minval) * (len(colors)-1)
+# desired image dimensions in pixels; "r" real, "i" imaginary
+def convert_to_rgb_cyclic ( minval, maxval, val, colors ):
+    fi = float(val-minval) / float(maxval-minval) * (len(colors)+1)
     i = int(fi)
     f = fi - i
     if f < EPSILON:
-        return colors[i]
+        return colors[i%len(colors)]
     else:
-        (r1, g1, b1), (r2, g2, b2) = colors[i], colors[i+1]
+        (r1, g1, b1), (r2, g2, b2) = colors[i%len(colors)], colors[(i+1)%len(colors)]
         return int(r1 + f*(r2-r1)), int(g1 + f*(g2-g1)), int(b1 + f*(b2-b1))
 
-# desired image dimensions in pixels; "r" real, "i" imaginary
 npr = 1201
-npi = 801
+npi = int((npr-1)/3.0*2.0) + 1
 
 # lower-left and upper-right coordinates of image field
 zll=(-2,-1)
@@ -60,9 +60,9 @@ for i in range(npr):
      if niter == iterlim:
        im.putpixel((i,npi-j-1),b)
      else:
-       im.putpixel((i,npi-j-1),convert_to_rgb(0,iterlim/10,niter/10,colors))
+       im.putpixel((i,npi-j-1),convert_to_rgb_cyclic(0,iterlim/50,niter,colors))
 
-
+drawgrid = 0
 if drawgrid :
   gdx = float(zur[0]-zll[0])/(ngx-1)
   gdy = float(zur[1]-zll[1])/(ngy-1)
