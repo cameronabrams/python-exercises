@@ -18,11 +18,9 @@ thought of as a vector from the origin to the point ![](.README-images/xy.png):
 
 ![](.README-images/complex-plane-fig.png)
 
-Also shown in this figure is the concept of the "complex conjugate" ![](.README-images/complexconjugate.png).  One of the rules about arithmetic operations on complex numbers is that _squaring_ a complex number means multiplying it by its own complex conjugate:
+_Squaring_ a complex number means multiplying it by itself:
 
 ![](.README-images/complex-square.png)
-
-Note that this quantity has no imaginary component, and its square root (by Pythagoras) is just the length of the vector ![](.README-images/z.png).
 
 Our goal in this assignment is not to become experts in complex variables, but instead to explore one of their more famous representations and learn a little more Python programming.   
 
@@ -35,9 +33,21 @@ In this exercise, we will write a two versions of a program that will generate a
 ## Programming Concepts
 
 This exercise demonstrates several concepts:
-1.  Image creation and pixel-by-pixel manipulation;
-2.  Nested looping;
-3.  Complex numbers in NumPy; and
-4.  Functions.
+1.  Nested looping;
+2.  Functions;
+3.  Complex number data types; and 
+4.  Image creation and pixel-by-pixel manipulation.
+
+## The Assignment
+
+1.  Write a python program that loops over a field of pixels of with W and height H that corresponds to a region in the complex plane with the point (-2,-1) at the lower-left and the point (1,1) at the upper right.  That is, the width of the region is 3 units in W pixels, and the height is 2 units in H pixels; in order to keep the two axes at the same scale, let W = (3/2)H.  At each point, construct a complex number and print out its square.
+(Note that python uses `j` to refer to ![](.README-images/i.png).)  Use the program `seed.py` provided here, which implements a loop over all WxH pixels.
+
+2. Write a function that accepts a single complex number and returns the number of iterations of the function above before the magnitude of the results exceeds 2.  Call this function for each point you visit in Part 1.
+
+3. Import the `Image` module from the `PIL` (python image library), and create an 'RGB'-mode image of WxH pixels.  At each pixel in the loop, use the `putpixel` function to color the pixel black if the point is in the set and white otherwise.  After the loop, save the image in 'my_bw.png'.
+
+The image below was created with H = 600.
 
 
+![](my_bw.png)
