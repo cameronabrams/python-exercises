@@ -1,8 +1,8 @@
 #
 # Seed code for Exercise 1:  Computing averages and standard deviations
 #
-# This program computes the column-wise averages from a datafile
-# with an arbitrary number of parallel columns of data of arbitrary length
+# This program computes the average from a datafile
+# with one number per line
 #
 # The accompanying file 'data1' is an example of this format
 # 
@@ -17,35 +17,19 @@
 #
 
 import fileinput
-import string
-import numpy as np
 
 count = 0
+tally = 0.0
 # read each line of input from the file named in the first argument
 for line in fileinput.input():
-    # split the line into an array of fields
-    lst=line.split(" ");
-    # if this is the first line, set up the accumulator 'sum'
-    # note that the number of elements in sum is the number of
-    # elements in 'lst', which should be the number of columns
-    # in the file
-    if count == 0 :
-        nf = len(lst);
-        sum = np.zeros(nf)
-    # add elements in this line to the tallies; note the type conversion
-    # to float
-    i=0
-    for x in lst[:] :
-       sum[i]+=float(x)
-       i+=1
+  # convert the character string input in `line` to a floating-point, and 
+  # tally it
+  tally += float(line)
+  # update the count of values tallied
+  count += 1
 
-    count+=1
+# divide the tally by the count to get the average
+tally /= count
 
-for i in range(nf):
-    sum[i]/=count
-
-print 'Averages:',
-for i in range(nf):
-    print ' {0:.5f}'.format(sum[i]),
-print
+print 'Average: {0:.5f}'.format(tally)
 print 'Program ends.'
