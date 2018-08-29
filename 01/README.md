@@ -53,7 +53,7 @@ you will modify `seed.py` so that it additionally computes the standard deviatio
 
 ## Programming Concepts
 
-The main concept this assignment teaches is file input.  With reference to `seed.py`, we first import the `fileinput` module:
+The main concept this assignment demonstrates is file input.  With reference to `seed.py`, we first import the `fileinput` module:
 ```
 import fileinput
 ```
