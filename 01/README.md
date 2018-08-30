@@ -33,7 +33,7 @@ that you will import the data into column `A` and that it will occupy cells
 `A1` to `A1048577`, then you would just click on an empty cell, and type
 `=average($A$1:$A$1048577)` and hit return.  However, if you try to do this, you will crash Excel, since
 it cannot handle more than 1,048,576 rows!  But you really like Excel, so you could import half
-the data into colum A and the other half into column B, and then compute the sum of A and the sum of B
+the data into column A and the other half into column B, and then compute the sum of A and the sum of B
 separately, add them together to get the total sum, and divide _that_ by 1,048,577 to get the mean.
 
 3. _Using a computer program_.  Of course, neither of those ways is really what you should do. The first is
@@ -43,7 +43,7 @@ handles this task.  How might such a program work?  A lot like the _algorithm_ f
    1.  Open the file (electronically) named by the user.
    2.  Initialize a tally to zero and a counter to zero.
    3.  Read the next line in the file; interpret what you see as a number.
-   4.  Add that number to a running tally, and add 1 to a counter to keep track of how many numbers you've read.
+   4.  Add that number to the tally, and add 1 to the counter to keep track of how many numbers you've read.
    5.  Ask if you are at the end of the file.  If no, go to 2.  If yes, then divide the tally by the counter, and that's the mean.
    6.  Print out the value of the mean for the user to see.
    7.  Exit.
@@ -86,13 +86,13 @@ $ head data1
 2.82520238
 1.87266323
 ```
-This is an ASCII text file with 1,048,577 lines.
-Each line has one number on it.
+This is an ASCII text file with 1,048,578 lines.
+Each line has one number on it. (Note to instructor:  I generated this with `mkinputs.py`.)
 
 2. Run the python program `seed.py` to report the average of the numbers in `data1`:
 ```
 $ python seed.py data1
-Average: 2.29994
+Average: 1.60048
 Program ends.
 ```
 

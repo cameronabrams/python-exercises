@@ -1,6 +1,4 @@
-# This program computes the column-wise average and 
-# standard deviation of a datafile with an arbitrary number 
-# of parallel columns of data of arbitrary length
+# Solution to Exercise 01
 # 
 # cameron f abrams
 # cfa22@drexel.edu
@@ -9,34 +7,17 @@
 #
 from math import sqrt 
 import fileinput
-import string
-import numpy as np
 
 count = 0
+tally_x = 0.0
+tally_xx = 0.0
 for line in fileinput.input():
-    # split the line into an array of fields
-    lst = line.split(" ");
-    # if this is the first line, set up the accumulators
-    if count == 0 :
-        nf = len(lst);
-        sum = np.zeros(nf)
-        # new accumulator for tallying sums of squares
-        sum2 = np.zeros(nf)
-    i=0
-    for x in lst[:] :
-       sum[i]+=float(x)
-       # tally the sum of squares
-       sum2[i]+=float(x)*float(x)
-       i+=1
-
+    x = float(line)
+    tally_x += x
+    tally_xx += x*x
     count+=1
 
-for i in range(nf):
-    sum[i] /= count
-    sum2[i] = sqrt((sum2[i] - sum[i]*sum[i]/count)/count)
-
-print 'Averages +/- Std. Devs.:',
-for i in range(nf):
-    print ' {0:.5f}+/-{1:0.5f}'.format(sum[i],sum2[i]),
-print
+mean = tally_x/count
+stdev = sqrt((tally_xx - 1.0/count*tally_x*tally_x)/count)
+print 'Average {0:.5f} Stdev {1:.5f}'.format(mean,stdev)
 print 'Program ends.'
