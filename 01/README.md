@@ -19,22 +19,22 @@ In this assignment, you will develop a program that can compute
 ![mu](.README-images/mu.png) and ![sigma](.README-images/sigma.png)
 for a long sequence of numbers.  Before turning to the assignment,
 it is worth thinking about how you might go about computing an average
-of a sequence of, say, 1,048,577 random numbers stored in plain text file.
+of a sequence of, say, 1,048,578 random numbers stored in plain text file.
 (Note that if these numbers are decimals to 8 significant digits, this file
 would be about 12 megabytes in size.)  Some ideas:
 
 1. _By hand_.  You could print out the file (if they are arranged one per line, then this would be about 21,000 pages, or 42 reams), and
-then you could sum them up using a calculator, and divide the sum by 1,048,577.  If 
+then you could sum them up using a calculator, and divide the sum by 1,048,578.  If 
 you can enter an 8-digit number in about 5 s, then this would take about 61 days
 of solid effort, assuming you made no mistakes and did not have to sleep, eat, or take breaks of any kind.
 
 2. _Using Excel_.  You could try import the text file into Excel.  Before you do this, you might envision
 that you will import the data into column `A` and that it will occupy cells 
-`A1` to `A1048577`, then you would just click on an empty cell, and type
-`=average($A$1:$A$1048577)` and hit return.  However, if you try to do this, you will crash Excel, since
+`A1` to `A1048578`, then you would just click on an empty cell, and type
+`=average($A$1:$A$1048578)` and hit return.  However, if you try to do this, you will crash Excel, since
 it cannot handle more than 1,048,576 rows!  But you really like Excel, so you could import half
 the data into column A and the other half into column B, and then compute the sum of A and the sum of B
-separately, add them together to get the total sum, and divide _that_ by 1,048,577 to get the mean.
+separately, add them together to get the total sum, and divide _that_ by 1,048,578 to get the mean.
 
 3. _Using a computer program_.  Of course, neither of those ways is really what you should do. The first is
 not feasible, and the second is tedious and inelegant.  But a computer program can be developed that easily 
@@ -49,7 +49,8 @@ handles this task.  How might such a program work?  A lot like the _algorithm_ f
    7.  Exit.
 
 This assignment _begins_ with both a datafile `data1` and a python program `seed.py` that does just this.  In this assignment
-you will modify `seed.py` so that it additionally computes the standard deviation of the data.
+you will modify `seed.py` so that it additionally computes the standard deviation of the data, and both the minimum and maximum values
+encountered in the data.
 
 ## Programming Concepts
 
@@ -97,6 +98,6 @@ Program ends.
 ```
 
 3. Copy seed.py to my_pgm.py, and edit my_pgm.py 
-so that it additionally reports the standard deviation 
+so that it additionally reports the minimum, maximum, and standard deviation 
 of the data.
 
