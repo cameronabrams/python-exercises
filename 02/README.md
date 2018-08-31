@@ -50,4 +50,5 @@ From this, you should be able to figure out how to additionally test whether or 
 
 ## The Assignment
 
-1. Write a python program incorporating the seed code above to process the file `data3` to compute the average, standard deviation, minimum value, and maximum value in each column of that file.
+1. Write a python program incorporating the seed code above to process the file `data3` to compute the average, standard deviation, minimum value, and maximum value in each column of that file. (Note to instructors: the code `mkinputs.py` was used to generate `data3`.)
+
