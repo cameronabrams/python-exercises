@@ -1,4 +1,4 @@
-# simple code to generate a 4-column, 10000-line file of "random" data
+# simple code to generate a 1-column, 1048578-line file of "random" data
 #
 # cameron f abrams  cfa22@drexel.edu
 #
