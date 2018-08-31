@@ -14,12 +14,17 @@ For this reason, when histogramming data, it is a good idea to know ahead of tim
 
 ## Programming Concepts
 
-This will build on the file-input skills of Exercise 01 and the array-manipulation skills of Exercise 02.  Here, we will first implement histogram generation using simple operations.  Then, we will use NumPy's `histogram` function to histogram the data for us, and we'll verify that our approach matches what `numpy.histogram()` does.  
-Finally, we'll use `MatPlotLib` to generate a plot of our histogram.
-
-
+This will build on the file-input skills of Exercise 01 and the array-manipulation skills of Exercise 02.  Here, we will first implement histogram generation manually using arrays.  Then, in a second version, we will use NumPy and MatPlotLib to simultaneously histogram the data and plot it.
 
 ## The Assignment
 
-1. Use the solution to Exercise 01 as a seed for this exercise.  
+1. Use the solution to Exercise 01 as a seed for this exercise.  Generate and plot a histogram that spans the domain [-10:10] with bins of size ![](.README-images/Delta-x.png) = 0.1.
+
+2. Modify this code to use the `matplotlib.pyplot.hist()` function.
+
+## Solutions
+
+![](my-hist.png)
+
+![](numpy-hist.png)
 
