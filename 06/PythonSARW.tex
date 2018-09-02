@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphics, graphicx, cite, fancybox, setspace}
+\usepackage{amsfonts, amssymb, amsmath, latexsym, epic, eepic, url,enumitem}
+\usepackage{wrapfig, subfigure}
+\usepackage{multirow}
+\usepackage{palatino}
+\usepackage[mathscr]{euscript}
+\usepackage{amsfonts}
+\usepackage[bf]{caption}
+\usepackage{dcolumn}
+\usepackage[numbers]{natbib}
+\usepackage[usenames,dvipsnames]{color}
+%\usepackage[normalem]{ulem}
+%\usepackage{enumitem}
+\usepackage{acronym}
+%\usepackage[centertags]{amsmath}
+%\usepackage{amsfonts,amssymb}
+\usepackage{accents}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+%\renewcommand{\baselinestretch}{1.1}
+%
+\newcommand{\molar}[1]{\underaccent{\bar}{#1}}
+\def\Vm{\molar{V}}
+%\renewcommand{\figurename}{Algorithm}
+\newcommand{\cfa}[1]{\color{red}{#1}\color{black}}
+\newcommand{\eve}[1]{\color{blue}{#1}\color{black}}
+\newcommand{\uu}[1]{{\boldsymbol #1}}
+\newcommand{\tpd}[3]
+{\left(\frac{\partial {#1}}{\partial {#2}}\right)_{#3}}
+\def\ttau{\uu{\tau}}
+\def\bb{\uu{b}}
+\def\nb{\uu{n}}
+\def\pb{\uu{p}}
+\def\wb{\uu{w}}
+\def\xb{\uu{x}}
+\def\yb{\uu{y}}
+\def\vb{\uu{v}}
+\def\zb{\uu{z}}
+\def\Xb{\uu{X}}
+\def\etab{\uu{\eta}}
+\def\thetab{\uu{\theta}}
+\def\lambdab{\uu{\lambda}}
+\def\gammab{\uu{\gamma}}
+\def\taub{\uu{\tau}}
+\def\phib{\uu{\phi}}
+\def\psib{\uu{\psi}}
+\def\nub{\uu{\nu}}
+\def\nablab{\uu{\nabla}}
+\def\varphib{\uu{\varphi}}
+\def\Ab{\uu{A}}
+\def\Bb{\uu{B}}
+\def\Gb{\uu{G}}
+\def\Vb{\uu{V}}
+\def\Fb{\uu{F}}
+\def\Jb{\uu{J}}
+\def\Rb{\uu{R}}
+\def\Tb{\uu{T}}
+\def\Mb{\uu{M}}
+\def\rb{\uu{r}}
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=7em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{gblock} = [rectangle, draw, fill=green!20,
+    text width=7em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+\hyphenation{mol-e-cules}
+\newenvironment{packed_item}{
+\begin{itemize}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\newenvironment{packed_enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\renewcommand\thesection{\Alph{section}}
+
+\newif \ifshowsolutions
+\showsolutionstrue
+\showsolutionsfalse
+
+\begin{document}
+
+\begin{centering}
+{\sc D\ R\ E\ X\ E\ L\ \ \ U\ N\ I\ V\ E\ R\ S\ I\ T\ Y}\\
+College of Engineering\\
+ENGR 131 -- Programming \\
+Winter 18-19\\
+A Suggested Programming Exercise:  Characterizing Self-Avoiding Random Walks\\
+Cameron F. Abrams -- cfa22@drexel.edu\\
+Department of Chemical and Biological Engineering\\
+\ifshowsolutions
+\textcolor{blue}{S\ O\ L\ U\ T\ I\ O\ N\ S}\\
+\fi
+\end{centering}
+
+\section*{Summary}
+In this assignment, you'll develop a Python program to generate and analyze random walks in 3-D space.  The main behavior we will analyze is the relationship between the {\bf end-to-end distance} and the {\bf contour length} of a random walk, and how this relationship depends on whether or not the walk is {\bf self-avoiding} or not.  
+The major Python programming skills we will learn about in this exercise are {\em multidimensional arrays} and random-number generation using {\tt NumPy}, as well as {\em vector operations} in 3-D space.
+
+\section*{Background and Relevant Equations}
+
+Random walks are common mathematical models used to describe phenomena in physics and engineering.  Perhaps the most famous example is {\bf diffusion}.  In particular, Einstein (yes, the Einstein) mathematically linked the random walk to the property of {\bf diffusivity}, and this enables us to invision how molecules move in response to gradients in concentration.  Self-avoiding random walks are a class of walks in which the path laid down by a random walker cannot intersect with itself; think of a rubber band or a piece of cooked spaghetti.  Perhaps the most relevant example of a self-avoiding random walk is a polymer chain in solution, and a random-walk model can allow us to estimate how much space a polymer chain occupies as a function of its molecular weight.  
+
+\section*{The }
+
+\section*{The Assignment}
+
+\begin{enumerate}
+	\item xxx
+\end{enumerate}
+
+\end{document}
