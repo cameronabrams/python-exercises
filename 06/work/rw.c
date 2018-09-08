@@ -57,6 +57,7 @@ int main ( int argc, char * argv[] ) {
   double R = 1.0;
   double S = 0.5;
   int maxtrial = 10000;
+  int ntries, maxtries=10, i0;
   vec * RW;
   vec * SAW;
   double * rdist;
@@ -83,14 +84,24 @@ int main ( int argc, char * argv[] ) {
   for (i=0;i<nsteps;i++) {
      rdist[i]=sadist[i]=0.0;
   }
-  bail=0;
-  for (w=0;!bail&&w<nwalkers;w++) {
+  for (w=0;w<nwalkers;w++) {
      fprintf(stdout,"Walker %d...\n",w);
-     for (i=1;!bail&&i<nsteps;i++) {
-        random_step(RW,i,R);
-	bail=self_avoiding_step(SAW,i,R,S,maxtrial);
-        rdist[i]+=diffnorm(&RW[i],&RW[0]);	
-        sadist[i]+=diffnorm(&SAW[i],&SAW[0]);	
+     ntries=0;
+     bail=0;
+     i0=1;
+     while (!bail&&ntries<maxtries) {
+	ntries++;
+        for (i=i0;!bail&&i<nsteps;i++) {
+           random_step(RW,i,R);
+	   bail=self_avoiding_step(SAW,i,R,S,maxtrial);
+           rdist[i]+=diffnorm(&RW[i],&RW[0]);	
+           sadist[i]+=diffnorm(&SAW[i],&SAW[0]);	
+        }
+        if (bail) {
+           bail=0;
+           i0=i/2;
+	   fprintf(stdout,"Bailing on walker %i step %i trial %i, restarting at step %i\n",w,i,ntries,i0);
+	}
      }
   }
   if (bail) nwalkers=w;
