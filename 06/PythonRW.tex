@@ -137,7 +137,7 @@ showstringspaces=false            %
 College of Engineering\\
 ENGR 131 -- Programming \\
 Winter 18-19\\
-A Suggested Programming Exercise:  Characterizing Self-Avoiding Random Walks\\
+A Suggested Programming Exercise:  Visualizing and Characterizing Random Walks\\
 Cameron F. Abrams -- cfa22@drexel.edu\\
 Department of Chemical and Biological Engineering\\
 \ifshowsolutions
@@ -146,14 +146,22 @@ Department of Chemical and Biological Engineering\\
 \end{centering}
 
 \section*{Summary}
-In this assignment, you'll develop a Python program to generate and analyze random walks in 3-D space.  The main behavior we will analyze is the relationship between the {\bf end-to-end distance} and the {\bf contour length} of a random walk, and how this relationship depends on whether or not the walk is {\bf self-avoiding} or not.  
-The major Python programming skills we will learn about in this exercise are {\em multidimensional arrays} and random-number generation using {\tt NumPy}, as well as {\em vector operations} in 3-D space.
+In this assignment, you'll develop a Python program to generate and analyze random walks in 3-D space.  The main behavior we will analyze is the relationship between the {\bf end-to-end distance}, termed $d$, and the {\bf number of steps} $n$ of a random walk.  
+The major Python programming skills we will learn about in this exercise are {\em multidimensional arrays} and random-number generation using {\tt NumPy}, as well as {\em vector operations} in 3-D space and 3-D plotting.
 
-\section*{Background and Relevant Equations}
+\section*{Background}
 
-Random walks are common mathematical models used to describe phenomena in physics and engineering.  Perhaps the most famous example is {\bf diffusion}.  In particular, Einstein (yes, the Einstein) mathematically linked the random walk to the property of {\bf diffusivity}, and this enables us to invision how molecules move in response to gradients in concentration.  Self-avoiding random walks are a class of walks in which the path laid down by a random walker cannot intersect with itself; think of a rubber band or a piece of cooked spaghetti.  Perhaps the most relevant example of a self-avoiding random walk is a polymer chain in solution, and a random-walk model can allow us to estimate how much space a polymer chain occupies as a function of its molecular weight.  
+Random walks are common mathematical models used to describe phenomena in physics and engineering.  The ceaseless thermal agitation of molecules in liquids means that each molecule executes a 3D random walk, and this type of motion is the physical picture underlying the phenomenon of diffusion.  
 
-\section*{The }
+In 3D space, one can imagine a random walk as a sequence of positions: $\rb_0,\ \rb_1,\ \dots\ rb_N$, where the distance between adjacent positions $\rb_{i}$ and $\rb_{i+1}$ is small.  We will take as our unit of measurement a constant step length in the random walk.  This means that the {\em norm} of the vector from any position in the walk $\rb_i$ to its next position $\rb_{i+1}$ is 1.  To work in 3D, it is best to work in {\em polar} coordinates $(r,\theta,\phi)$.  The standard mapping from Cartesian $(x,y,z)$ and polar coordinates is
+%
+\begin{align*}
+x & = r \sin\theta \cos\phi\\
+y & = r \sin\theta \sin\phi\\
+z & = r \cos\theta
+\end{align*}
+%
+A step in a random walk occurs in a random direction in 3D space.  However, we can't choose a random value for this direction uniformly in Cartesian space by uniformly sampling displacements along $x$, $y$, and $z$.   Instead, given position $\rb_i$ and step length $R$ (here this is 1), we first choose a uniform random number $-\pi<\phi<\pi$ and another $-1<\cos(\theta)<1$, and use polar coordinates to generate the displacements along $x$, $y$, and $z$ these two numbers dictate.  
 
 \section*{The Assignment}
 
